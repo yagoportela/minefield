@@ -1,6 +1,10 @@
 section.main-section {
+    max-width: 600px;
+    margin: auto;
+    
     h1 {
         display: flex;
         justify-content: center;
+        
     }
 }

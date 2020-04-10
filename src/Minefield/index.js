@@ -42,13 +42,19 @@ export default function Minefield() {
 
     return (
         <section className="campo-minado">
+            <h1>Minefield</h1>
             <div className="config">
+                <div className="row result">
+                    {game.win && 'You win!'}
+                    {game.lose && 'You lose!'}
+                </div>
+
                 {game.level &&
                     <div className="row">
-                        <div>Level: {game.level.name}</div>
-                        <div>Rows: {game.level.rows}</div>
-                        <div>Columns: {game.level.columns}</div>
-                        <div>Bombs: {game.level.bombs}</div>
+                        <div className="line">Level: <br />{game.level.name}</div>
+                        <div className="line">Rows: <br />{game.level.rows}</div>
+                        <div className="line">Columns: <br />{game.level.columns}</div>
+                        <div className="line">Bombs: <br />{game.level.bombs}</div>
                     </div>
                 }
 
@@ -57,36 +63,36 @@ export default function Minefield() {
                     <div>Fields: {game.qtyFieldsToExplore}</div>
                 </div>
 
-                {game.hasStarted &&
-                    <button 
-                        className="row"
-                        onClick={() => restart()}>
-                        Restart
+                <div className="row">
+                    <div>
+                        {game.hasStarted &&
+                            <button
+                                className="row"
+                                onClick={() => restart()}>
+                                Restart
                     </button>
-                }
-
-                <select 
-                    className="row"
-                    onChange={(evt) => changeLevel(evt.target.value)}
-                >
-                    {Object.keys(levels).map((level) => (
-                        <option value={level} key={level}>{levels[level].name}</option>
-                    ))}
-                </select>
-
-                <div className="row result">
-                    {game.win && 'You win!'}
-                    {game.lose && 'You lose!'}
+                        }
+                    </div>
+                    <div>
+                        <select
+                            className="row"
+                            onChange={(evt) => changeLevel(evt.target.value)}
+                        >
+                            {Object.keys(levels).map((level) => (
+                                <option value={level} key={level}>{levels[level].name}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
             </div>
             <div className="main">
                 {game.rows && game.rows.map(row => (
-                    <div 
+                    <div
                         key={row.rowIndex}
                         className="square-row"
                     >
                         {row.squares.map(square => (
-                            <div 
+                            <div
                                 key={square.address.squareIndexInMinefield}
                                 className={`
                                     square 

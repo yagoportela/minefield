@@ -1,16 +1,45 @@
+$Background:#cde3ff;
+$Color-Bright:#cde3ff;
+$Color-Dark: #cde3ff;
+
 section.campo-minado {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 
     .config {
-        background-color: lemonchiffon;
-        border: 1px solid darkgray;
-        padding: 15px;
+        background-color: $Background;
         font-size: 0.9rem;
+        border: 1px solid darkgray;
+        position: static;
+        bottom: 0;
+        border-radius: 10px;
+        padding: 10px 0;
+
+
+        @media screen and (max-width: 600px)
+        {
+            position: fixed;
+            width: 96%;
+        }  
 
         .row {
-            display: block;
             margin-top: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            align-items: center;
+
+            .line{
+                margin: 0 18px;
+                text-align: center;
+            }
         }
 
         .result {
@@ -21,9 +50,16 @@ section.campo-minado {
     }
 
     .main {
-        background-color: blanchedalmond;
+        background-color: $Background;
         border: 1px solid darkgray;
         padding: 10px;
+        border-radius: 13px;
+
+
+        @media screen and (max-width: 600px)
+        {
+            margin-bottom:131px;
+        }  
 
         .square-row {
             display: flex;
@@ -38,11 +74,17 @@ section.campo-minado {
                 border: 0;
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
-                font-size: 0.8rem;
-                width: 18px;
-                height: 18px;
+                width: 24px;
+                height: 24px;
                 text-align: center;
                 cursor: pointer;
+                width: 7%;
+                padding-bottom: 2%;
+
+                @media screen and (max-width: 600px)
+                {
+                    padding-bottom: 0;
+                }  
     
                 &.even {
                     &.not-showing {
